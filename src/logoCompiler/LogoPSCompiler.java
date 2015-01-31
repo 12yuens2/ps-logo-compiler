@@ -7,8 +7,13 @@ public class LogoPSCompiler {
   public static void main(String[] args) {
 
     Parser.t = Lexer.lex();
-    Prog prog = Prog.parse();
+    
+    while (!(Parser.t instanceof EOIToken )){
+        Parser.t = Lexer.lex();
+        System.out.println(Parser.t);
+    }
 
+    Prog prog = Prog.parse();
     if (!Parser.error) {
       psPrologue();
       prog.codegen();
@@ -28,20 +33,24 @@ public class LogoPSCompiler {
 	    System.out.println("Heading exch add Trueheading");
 	    System.out.println("/Heading exch def");
 	    System.out.println("} def");
+	    
 	    System.out.println("/Left {");
 	    System.out.println("Heading exch sub Trueheading");
 	    System.out.println("/Heading exch def");
 	    System.out.println("} def");
+	    
 	    System.out.println("/Trueheading {");
 	    System.out.println("360 mod dup");
 	    System.out.println("0 lt { 360 add } if");
 	    System.out.println("} def");
+	    
 	    System.out.println("/Forward {");
 	    System.out.println("dup  Heading sin mul");
 	    System.out.println("exch Heading cos mul");
 	    System.out.println("2 copy Newposition");
 	    System.out.println("rlineto");
 	    System.out.println("} def");
+	    
 	    System.out.println("/Newposition {");
 	    System.out.println("Heading 180 gt Heading 360 lt");
 	    System.out.println("and { neg } if exch");
