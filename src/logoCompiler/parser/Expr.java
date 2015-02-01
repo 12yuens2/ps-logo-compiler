@@ -1,6 +1,7 @@
 package logoCompiler.parser;
 
 import logoCompiler.lexer.*;
+import logoCompiler.lexer.tokens.operators.OperatorToken;
 
 /*
  * expr:

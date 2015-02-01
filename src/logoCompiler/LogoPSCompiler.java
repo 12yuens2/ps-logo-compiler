@@ -1,6 +1,7 @@
 package logoCompiler;
 
 import logoCompiler.lexer.*;
+import logoCompiler.lexer.tokens.EOIToken;
 import logoCompiler.parser.*;
 
 public class LogoPSCompiler {
