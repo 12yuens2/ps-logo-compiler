@@ -2,7 +2,6 @@ package logoCompiler.lexer.tokens.keywords;
 
 import logoCompiler.lexer.tokens.Token;
 
-
-public class FORWARDToken extends StatementToken {
+public class StatementToken extends Token {
 
 }

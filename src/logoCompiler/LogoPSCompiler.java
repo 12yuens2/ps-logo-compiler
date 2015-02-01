@@ -8,13 +8,8 @@ public class LogoPSCompiler {
   public static void main(String[] args) {
 
     Parser.t = Lexer.lex();
-    
-    while (!(Parser.t instanceof EOIToken )){
-        Parser.t = Lexer.lex();
-        System.out.println(Parser.t);
-    }
-
     Prog prog = Prog.parse();
+
     if (!Parser.error) {
       psPrologue();
       prog.codegen();

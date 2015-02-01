@@ -11,8 +11,8 @@ public class BooleanEqualsToken extends OperatorToken {
 
 	@Override
 	public int precedence() {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return 2;
 	}
 
 }

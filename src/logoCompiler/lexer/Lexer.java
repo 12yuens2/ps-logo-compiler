@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.*;
 
 import logoCompiler.lexer.tokens.EOIToken;
-import logoCompiler.lexer.tokens.IdentToken;
 import logoCompiler.lexer.tokens.LParenToken;
 import logoCompiler.lexer.tokens.NumToken;
 import logoCompiler.lexer.tokens.RParenToken;
@@ -16,6 +15,7 @@ import logoCompiler.lexer.tokens.keywords.ELSEToken;
 import logoCompiler.lexer.tokens.keywords.ENDIFToken;
 import logoCompiler.lexer.tokens.keywords.FORWARDToken;
 import logoCompiler.lexer.tokens.keywords.IFToken;
+import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.lexer.tokens.keywords.LEFTToken;
 import logoCompiler.lexer.tokens.keywords.MAINToken;
 import logoCompiler.lexer.tokens.keywords.PROCToken;
@@ -105,9 +105,8 @@ public final class Lexer {
 	     	if (ch != RPAREN){
 	     		token = token.concat(Character.toString((char) ch));	     		
 	     	}
-	     	System.out.println(token);
         }
-	    switch (token.toUpperCase().trim()){
+	    switch (token.trim()){
 	    case "PROC":
 	    	return new PROCToken();
 	    case "IF":
@@ -124,11 +123,11 @@ public final class Lexer {
 	    	return new LEFTToken();
 	    case "THEN":
 	    	return new THENToken();
-	    case "MAIN":
+/*	    case "MAIN":
 	    	return new MAINToken();
 	    case "VOID":
 	    	return new VOIDToken();
-	    case "==": 
+*/	    case "==": 
 	    	return new BooleanEqualsToken();
 	    case"-":
 	    	return new MinusToken();
@@ -160,9 +159,9 @@ public final class Lexer {
   static Token getOtherToken(String token) {
 	  try {
 		  Integer.parseInt(token.trim());
-		  return new NumToken();
+		  return new NumToken(token);
 	  } catch (NumberFormatException e) {
-		  return new IdentToken();
+		  return new IdentToken(token.trim());
 	  }
   }
 }
