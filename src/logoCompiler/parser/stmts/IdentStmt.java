@@ -40,4 +40,9 @@ public class IdentStmt extends Stmt {
 	    
 		return new IdentStmt(name, expr);
 	}
+	
+	public void codegen(){
+		expr.codegen();
+		System.out.println(name);
+	}
 }

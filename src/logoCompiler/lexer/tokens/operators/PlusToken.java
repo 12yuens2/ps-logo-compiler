@@ -5,14 +5,12 @@ public class PlusToken extends OperatorToken {
 
 	@Override
 	public String psOpCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return "add";
 	}
 
 	@Override
 	public int precedence() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 
 }

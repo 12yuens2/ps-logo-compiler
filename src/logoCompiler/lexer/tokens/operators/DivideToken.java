@@ -5,14 +5,12 @@ public class DivideToken extends OperatorToken {
 
 	@Override
 	public String psOpCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return "div";
 	}
 
 	@Override
 	public int precedence() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 }

@@ -13,7 +13,7 @@ public class IdentExpr extends Expr {
 
 	@Override
 	public void codegen() {
-		// TODO Auto-generated method stub
+		System.out.println(name);
 	}
 	
 	public static Expr parse(){

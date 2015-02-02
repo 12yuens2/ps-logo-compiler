@@ -75,4 +75,14 @@ public class IfStmt extends Stmt {
 	    Parser.t = Lexer.lex();
 		return new IfStmt(expr, then, el);
 	}
+	
+	@Override
+	public void codegen(){
+		expr.codegen();
+		System.out.println("{");
+		thenStmts.codegen();
+		System.out.println("}{");
+		elseStmts.codegen();
+		System.out.println("} ifelse");
+	}
 }

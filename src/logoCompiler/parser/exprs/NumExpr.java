@@ -20,7 +20,7 @@ public class NumExpr extends Expr {
 	
 	@Override
 	public void codegen() {
-		
+		System.out.println(number);
 	}
 
 }

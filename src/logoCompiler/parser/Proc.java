@@ -8,6 +8,7 @@ import logoCompiler.lexer.tokens.keywords.LEFTToken;
 import logoCompiler.lexer.tokens.keywords.PROCToken;
 import logoCompiler.lexer.tokens.keywords.RIGHTToken;
 import logoCompiler.lexer.tokens.keywords.StatementToken;
+import logoCompiler.lexer.tokens.keywords.VOIDToken;
 import logoCompiler.parser.stmts.ForwardStmt;
 import logoCompiler.parser.stmts.IdentStmt;
 import logoCompiler.parser.stmts.IfStmt;
@@ -53,7 +54,9 @@ public final class Proc {
     if (Parser.t instanceof IdentToken) {
         arg = ((IdentToken) Parser.t).getName();
         Parser.t = Lexer.lex();
-      } else {
+      } else if (Parser.t instanceof VOIDToken) {
+    	  arg = "VOID";
+    	  Parser.t = Lexer.lex();
         //error?
       }    
     if (Parser.t instanceof RParenToken) {
@@ -62,7 +65,7 @@ public final class Proc {
         //error?
     }
     
-    while (!(Parser.t instanceof PROCToken)){
+    while (!(Parser.t instanceof PROCToken || Parser.t instanceof EOIToken)){
         if (Parser.t instanceof IFToken){
         	stmts.add(IfStmt.parse());
         } else if (Parser.t instanceof FORWARDToken){
@@ -76,7 +79,6 @@ public final class Proc {
         }
     }
     
-    System.out.println("FINISHED PROC");
     return new Proc(name, arg, stmts);
   }
 
@@ -84,7 +86,14 @@ public final class Proc {
     System.out.print("/");
     System.out.print(name);
     System.out.println(" {");
-//    stmts.codegen();
+    if (!arg.equals("VOID")){
+    	System.out.println("1 dict begin");
+    	System.out.println("/" + arg + " exch def");
+    }
+    stmts.codegen();
+    if (!arg.equals("VOID")){
+        System.out.println("end");    	
+    }
     System.out.println("} def");
   }
 }

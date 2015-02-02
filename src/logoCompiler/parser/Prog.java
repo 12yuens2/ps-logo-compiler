@@ -23,11 +23,13 @@ public class Prog {
     while (Parser.t instanceof PROCToken) {
    	    procs.add(Proc.parse());
     }
+
     if (Parser.t instanceof EOIToken) {
       Parser.t = Lexer.lex();
+
     } else {
       //error?
-    } 
+    }
     return new Prog(procs);
   }
 

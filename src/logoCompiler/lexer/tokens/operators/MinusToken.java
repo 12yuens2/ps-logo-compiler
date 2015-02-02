@@ -5,8 +5,7 @@ public class MinusToken extends OperatorToken {
 
 	@Override
 	public String psOpCode() {
-		// TODO Auto-generated method stub
-		return null;
+		return "sub";
 	}
 
 	@Override

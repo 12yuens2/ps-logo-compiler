@@ -22,23 +22,22 @@ import logoCompiler.lexer.tokens.keywords.PROCToken;
 import logoCompiler.lexer.tokens.keywords.RIGHTToken;
 import logoCompiler.lexer.tokens.keywords.THENToken;
 import logoCompiler.lexer.tokens.keywords.VOIDToken;
-import logoCompiler.lexer.tokens.operators.BooleanEqualsToken;
 import logoCompiler.lexer.tokens.operators.DivideToken;
-import logoCompiler.lexer.tokens.operators.EqualsToken;
-import logoCompiler.lexer.tokens.operators.GreaterOrEqualsToken;
-import logoCompiler.lexer.tokens.operators.GreaterThanToken;
-import logoCompiler.lexer.tokens.operators.LessOrEqualsToken;
-import logoCompiler.lexer.tokens.operators.LessThanToken;
 import logoCompiler.lexer.tokens.operators.MinusToken;
 import logoCompiler.lexer.tokens.operators.MultiplyToken;
-import logoCompiler.lexer.tokens.operators.NotEqualsToken;
 import logoCompiler.lexer.tokens.operators.OperatorToken;
 import logoCompiler.lexer.tokens.operators.PlusToken;
+import logoCompiler.lexer.tokens.operators.booleans.BooleanEqualsToken;
+import logoCompiler.lexer.tokens.operators.booleans.GreaterOrEqualsToken;
+import logoCompiler.lexer.tokens.operators.booleans.GreaterThanToken;
+import logoCompiler.lexer.tokens.operators.booleans.LessOrEqualsToken;
+import logoCompiler.lexer.tokens.operators.booleans.LessThanToken;
+import logoCompiler.lexer.tokens.operators.booleans.NotEqualsToken;
 
 
 public final class Lexer {
   static int ch = ' ';
-  static File logoFile = new File("src/LogoPrograms/dragon.t");
+  static File logoFile = new File("src/LogoPrograms/triangle.t");
   static FileReader reader;
   final static int LPAREN = (int) ( (char) "(".charAt(0));
   final static int RPAREN = (int) ( (char) ")".charAt(0));
@@ -100,11 +99,12 @@ public final class Lexer {
   static Token getToken(int ch){
 	  String token = Character.toString((char)ch);
 	  
-	    while (ch != ' ' && ch != '\n' && ch != '\t' && ch != RPAREN) {
+	    while (ch != ' ' && ch != '\n' && ch != '\t' && ch != RPAREN && ch != LPAREN) {
 	    	ch = getChar();
-	     	if (ch != RPAREN){
+	     	if (ch != RPAREN && ch != LPAREN){
 	     		token = token.concat(Character.toString((char) ch));	     		
 	     	}
+
         }
 	    switch (token.trim()){
 	    case "PROC":
@@ -124,10 +124,10 @@ public final class Lexer {
 	    case "THEN":
 	    	return new THENToken();
 /*	    case "MAIN":
-	    	return new MAINToken();
+	    	return new MAINToken(); */
 	    case "VOID":
 	    	return new VOIDToken();
-*/	    case "==": 
+	    case "==": 
 	    	return new BooleanEqualsToken();
 	    case"-":
 	    	return new MinusToken();
@@ -147,8 +147,6 @@ public final class Lexer {
 	    	return new GreaterThanToken();
 	    case ">=" :
 	    	return new GreaterOrEqualsToken();
-	    case "=" :
-	    	return new EqualsToken();
 		default:
 			return getOtherToken(token);
 	    	//...

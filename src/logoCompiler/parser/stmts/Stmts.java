@@ -1,6 +1,9 @@
 package logoCompiler.parser.stmts;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
+
+import logoCompiler.parser.Proc;
 
 public class Stmts {
 
@@ -16,5 +19,11 @@ public class Stmts {
 	
 	public ArrayList<Stmt> getStmts(){
 		return stmts;
+	}
+
+	public void codegen() {
+		for (Stmt s: stmts){
+			s.codegen();
+		}
 	}
 }
