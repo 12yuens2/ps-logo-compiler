@@ -1,4 +1,5 @@
 package logoCompiler.parser;
+import logoCompiler.Writer;
 import  logoCompiler.lexer.*;
 import logoCompiler.lexer.tokens.*;
 import logoCompiler.lexer.tokens.keywords.FORWARDToken;
@@ -42,58 +43,46 @@ public final class Proc {
 
     if (Parser.t instanceof IdentToken) {
       name = ((IdentToken) Parser.t).getName();
-      Parser.t = Lexer.lex();
     } else {
-      //error?
+      Parser.addError("Identity expected");
     }
+    Parser.t = Lexer.lex();
+    
     if (Parser.t instanceof LParenToken) {
-      Parser.t = Lexer.lex();
     } else {
-      //error?
+      Parser.addError("'(' expected");
     }
+    Parser.t = Lexer.lex();
+    
     if (Parser.t instanceof IdentToken) {
         arg = ((IdentToken) Parser.t).getName();
-        Parser.t = Lexer.lex();
       } else if (Parser.t instanceof VOIDToken) {
     	  arg = "VOID";
-    	  Parser.t = Lexer.lex();
-        //error?
-      }    
+      } else {
+          Parser.addError("Argument expected");
+      }
+    Parser.t = Lexer.lex();
+    
     if (Parser.t instanceof RParenToken) {
-        Parser.t = Lexer.lex();
     } else {
-        //error?
+        Parser.addError("')' expected");
     }
+    Parser.t = Lexer.lex();
     
     while (!(Parser.t instanceof PROCToken || Parser.t instanceof EOIToken)){
-        if (Parser.t instanceof IFToken){
-        	stmts.add(IfStmt.parse());
-        } else if (Parser.t instanceof FORWARDToken){
-        	stmts.add(ForwardStmt.parse());
-        } else if (Parser.t instanceof LEFTToken){
-        	stmts.add(LeftStmt.parse());
-        } else if (Parser.t instanceof RIGHTToken){
-        	stmts.add(RightStmt.parse());
-        } else if (Parser.t instanceof IdentToken){
-        	stmts.add(IdentStmt.parse());
-        }
+       stmts.findStmts();
     }
     
     return new Proc(name, arg, stmts);
   }
 
   public void codegen() {
-    System.out.print("/");
-    System.out.print(name);
-    System.out.println(" {");
-    if (!arg.equals("VOID")){
-    	System.out.println("1 dict begin");
-    	System.out.println("/" + arg + " exch def");
-    }
+    Writer.write("/" + name + "{");
     stmts.codegen();
-    if (!arg.equals("VOID")){
-        System.out.println("end");    	
-    }
-    System.out.println("} def");
+    Writer.write("} def");
+  }
+  
+  public String getName(){
+	  return this.name;
   }
 }

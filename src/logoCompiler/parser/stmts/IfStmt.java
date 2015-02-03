@@ -1,6 +1,8 @@
 package logoCompiler.parser.stmts;
 
+import logoCompiler.Writer;
 import logoCompiler.lexer.Lexer;
+import logoCompiler.lexer.tokens.EOIToken;
 import logoCompiler.lexer.tokens.keywords.ELSEToken;
 import logoCompiler.lexer.tokens.keywords.ENDIFToken;
 import logoCompiler.lexer.tokens.keywords.FORWARDToken;
@@ -35,41 +37,31 @@ public class IfStmt extends Stmt {
 
 	    Expr expr = Expr.parse();
   
+	    int line = Lexer.lineNumber;
 	    if (Parser.t instanceof THENToken){
 	    	
 	    } else {
-	    	//error?
+	    	Parser.addError("Missing 'THEN'");
 	    }
 	    Parser.t = Lexer.lex();
-
+	    line = Lexer.lineNumber;
 	    while (!(Parser.t instanceof ELSEToken)){
-	        if (Parser.t instanceof IFToken){
-	        	then.add(IfStmt.parse());
-	        } else if (Parser.t instanceof FORWARDToken){
-	        	then.add(ForwardStmt.parse());
-	        } else if (Parser.t instanceof LEFTToken){
-	        	then.add(LeftStmt.parse());
-	        } else if (Parser.t instanceof RIGHTToken){
-	        	then.add(RightStmt.parse());
-	        } else if (Parser.t instanceof IdentToken){
-	        	then.add(IdentStmt.parse());
-	        }
+	    	if (Parser.t instanceof EOIToken){
+	    		Parser.addError("Missing 'ELSE'",line);
+	    		return null;
+	    	}
+	    	then.findStmts();
 	    }
 
 	    Parser.t = Lexer.lex();
 	    
+	    line = Lexer.lineNumber;
 	    while (!(Parser.t instanceof ENDIFToken)){
-	        if (Parser.t instanceof IFToken){
-	        	el.add(IfStmt.parse());
-	        } else if (Parser.t instanceof FORWARDToken){
-	        	el.add(ForwardStmt.parse());
-	        } else if (Parser.t instanceof LEFTToken){
-	        	el.add(LeftStmt.parse());
-	        } else if (Parser.t instanceof RIGHTToken){
-	        	el.add(RightStmt.parse());
-	        } else if (Parser.t instanceof IdentToken){
-	        	el.add(IdentStmt.parse());
-	        }
+	    	if (Parser.t instanceof EOIToken){
+	    		Parser.addError("Missing 'ENDIF'",line);
+	    		return null;
+	    	}
+	    	el.findStmts();
 	    }	    
 	    
 	    Parser.t = Lexer.lex();
@@ -79,10 +71,10 @@ public class IfStmt extends Stmt {
 	@Override
 	public void codegen(){
 		expr.codegen();
-		System.out.println("{");
+		Writer.write("{");
 		thenStmts.codegen();
-		System.out.println("}{");
+		Writer.write("pop }{");
 		elseStmts.codegen();
-		System.out.println("} ifelse");
+		Writer.write("pop } ifelse");
 	}
 }

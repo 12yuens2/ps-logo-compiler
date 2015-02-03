@@ -1,5 +1,6 @@
 package logoCompiler.parser.stmts;
 
+import logoCompiler.Writer;
 import logoCompiler.lexer.Lexer;
 import logoCompiler.parser.Parser;
 import logoCompiler.parser.exprs.Expr;
@@ -22,6 +23,6 @@ public class RightStmt extends Stmt {
 	  @Override
 	public void codegen() {
 	    expr.codegen();
-	    System.out.println("Right");
+	    Writer.write("Right");
 	  }
 	}

@@ -1,5 +1,6 @@
 package logoCompiler.parser.exprs;
 
+import logoCompiler.Writer;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.Parser;
 
@@ -10,11 +11,6 @@ public class IdentExpr extends Expr {
 	public IdentExpr(String name) {
 		this.name = name;
 	}
-
-	@Override
-	public void codegen() {
-		System.out.println(name);
-	}
 	
 	public static Expr parse(){
 		String name;
@@ -24,4 +20,10 @@ public class IdentExpr extends Expr {
 		return new IdentExpr(name);
 		
 	}
+	
+	@Override
+	public void codegen() {
+		Writer.write("dup");
+	}
+	
 }

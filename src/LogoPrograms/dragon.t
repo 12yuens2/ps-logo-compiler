@@ -19,4 +19,4 @@
 	    ENDIF 
 
 	PROC MAIN (VOID)
-	   LDRAGON ( 11 )
+	   LDRAGON ( 110 )

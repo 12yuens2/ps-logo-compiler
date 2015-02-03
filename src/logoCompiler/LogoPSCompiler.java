@@ -2,67 +2,78 @@ package logoCompiler;
 
 import logoCompiler.lexer.*;
 import logoCompiler.lexer.tokens.EOIToken;
+import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.*;
+import logoCompiler.parser.stmts.IdentStmt;
+import logoCompiler.Writer;
 
 public class LogoPSCompiler {
-  public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    Parser.t = Lexer.lex();
-    Prog prog = Prog.parse();
+		Writer.init();
+		Parser.t = Lexer.lex();
+		Prog prog = Prog.parse();
+		IdentStmt.compare(prog.getProcNames());
+		
+		
+		if (Parser.errors.isEmpty()) {
+			psPrologue();
+			prog.codegen();
+			psEpilogue();
+			System.out.println("Output file created.");
+		} else {
+			Parser.printErrors();
+			System.err.println("Output file not created.");
+		}
+		Writer.close();
+	}
 
-    if (!Parser.error) {
-      psPrologue();
-      prog.codegen();
-      psEpilogue();
-    }
-  }
-  
-  public static void psPrologue() {
-	    System.out.println("%!PS-Adobe-3.0");	// Adobe header
-	    /* rest of prologue ... */
-	    System.out.println("/Xpos    { 300 } def");
-	    System.out.println("/Ypos    { 500 } def");
-	    System.out.println("/Heading { 0   } def");
-	    System.out.println("/Arg     { 0   } def");
-	    //Implementation of Right, Left and Forward procedures in PostScript
-	    System.out.println("/Right   {");
-	    System.out.println("Heading exch add Trueheading");
-	    System.out.println("/Heading exch def");
-	    System.out.println("} def");
-	    
-	    System.out.println("/Left {");
-	    System.out.println("Heading exch sub Trueheading");
-	    System.out.println("/Heading exch def");
-	    System.out.println("} def");
-	    
-	    System.out.println("/Trueheading {");
-	    System.out.println("360 mod dup");
-	    System.out.println("0 lt { 360 add } if");
-	    System.out.println("} def");
-	    
-	    System.out.println("/Forward {");
-	    System.out.println("dup  Heading sin mul");
-	    System.out.println("exch Heading cos mul");
-	    System.out.println("2 copy Newposition");
-	    System.out.println("rlineto");
-	    System.out.println("} def");
-	    
-	    System.out.println("/Newposition {");
-	    System.out.println("Heading 180 gt Heading 360 lt");
-	    System.out.println("and { neg } if exch");
-	    System.out.println("Heading  90 gt Heading 270 lt");
-	    System.out.println("and { neg } if exch");
-	    System.out.println("Ypos add /Ypos exch def");
-	    System.out.println("Xpos add /Xpos exch def");
-	    System.out.println("} def");
-	  }
+	public static void psPrologue() {
+		Writer.write("%!PS-Adobe-3.0");	// Adobe header
+		/* rest of prologue ... */
+		Writer.write("/Xpos    { 300 } def");
+		Writer.write("/Ypos    { 500 } def");
+		Writer.write("/Heading { 0   } def");
+		Writer.write("/Arg     { 0   } def");
+		//Implementation of Right, Left and Forward procedures in PostScript
+		Writer.write("/Right   {");
+		Writer.write("Heading exch add Trueheading");
+		Writer.write("/Heading exch def");
+		Writer.write("} def");
 
-	  public static void psEpilogue() {
-	    /* epilogue ... */
-	    System.out.println("Xpos Ypos moveto");
-	    //Call Main to start
-	    System.out.println("MAIN");
-	    System.out.println("stroke");
-	    System.out.println("showpage");
-	  }
+		Writer.write("/Left {");
+		Writer.write("Heading exch sub Trueheading");
+		Writer.write("/Heading exch def");
+		Writer.write("} def");
+
+		Writer.write("/Trueheading {");
+		Writer.write("360 mod dup");
+		Writer.write("0 lt { 360 add } if");
+		Writer.write("} def");
+
+		Writer.write("/Forward {");
+		Writer.write("dup  Heading sin mul");
+		Writer.write("exch Heading cos mul");
+		Writer.write("2 copy Newposition");
+		Writer.write("rlineto");
+		Writer.write("} def");
+
+		Writer.write("/Newposition {");
+		Writer.write("Heading 180 gt Heading 360 lt");
+		Writer.write("and { neg } if exch");
+		Writer.write("Heading  90 gt Heading 270 lt");
+		Writer.write("and { neg } if exch");
+		Writer.write("Ypos add /Ypos exch def");
+		Writer.write("Xpos add /Xpos exch def");
+		Writer.write("} def");
+	}
+
+	public static void psEpilogue() {
+		/* epilogue ... */
+		Writer.write("Xpos Ypos moveto");
+		//Call Main to start
+		Writer.write("MAIN");
+		Writer.write("stroke");
+		Writer.write("showpage");
+	}
 }

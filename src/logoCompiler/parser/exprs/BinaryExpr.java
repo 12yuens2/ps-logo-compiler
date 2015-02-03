@@ -1,4 +1,5 @@
 package logoCompiler.parser.exprs;
+import logoCompiler.Writer;
 import  logoCompiler.lexer.*;
 import logoCompiler.lexer.tokens.operators.OperatorToken;
 
@@ -25,6 +26,6 @@ public final class BinaryExpr extends Expr {
 public void codegen() {
     left.codegen();
     right.codegen();
-    System.out.println(oper.psOpCode());
+    Writer.write(oper.psOpCode());
   }
 }

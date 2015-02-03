@@ -1,5 +1,6 @@
 package logoCompiler.parser.exprs;
 
+import logoCompiler.Writer;
 import logoCompiler.lexer.tokens.NumToken;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.Parser;
@@ -20,7 +21,7 @@ public class NumExpr extends Expr {
 	
 	@Override
 	public void codegen() {
-		System.out.println(number);
+		Writer.write(number);
 	}
 
 }
