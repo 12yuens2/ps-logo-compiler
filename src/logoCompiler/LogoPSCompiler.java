@@ -14,6 +14,7 @@ public class LogoPSCompiler {
 		Parser.t = Lexer.lex();
 		Prog prog = Prog.parse();
 		IdentStmt.compare(prog.getProcNames());
+		prog.compare();
 		
 		
 		if (Parser.errors.isEmpty()) {

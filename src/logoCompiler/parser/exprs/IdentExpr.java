@@ -1,15 +1,20 @@
 package logoCompiler.parser.exprs;
 
+import java.util.ArrayList;
+
 import logoCompiler.Writer;
+import logoCompiler.lexer.Lexer;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.Parser;
 
 public class IdentExpr extends Expr {
 
 	private String name;
+	private int lineNumber;
 	
-	public IdentExpr(String name) {
+	public IdentExpr(String name, int line) {
 		this.name = name;
+		this.lineNumber = line;
 	}
 	
 	public static Expr parse(){
@@ -17,7 +22,7 @@ public class IdentExpr extends Expr {
 		
 		name = ((IdentToken)Parser.t).getName();
 		
-		return new IdentExpr(name);
+		return new IdentExpr(name, Lexer.lineNumber);
 		
 	}
 	
@@ -25,5 +30,14 @@ public class IdentExpr extends Expr {
 	public void codegen() {
 		Writer.write("dup");
 	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public int getLine() {
+		return lineNumber;
+	}
+
 	
 }

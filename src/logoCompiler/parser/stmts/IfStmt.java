@@ -77,4 +77,16 @@ public class IfStmt extends Stmt {
 		elseStmts.codegen();
 		Writer.write("pop } ifelse");
 	}
+	
+	public Stmts getThens(){
+		return thenStmts;
+	}
+	
+	public Stmts getElses(){
+		return elseStmts;
+	}
+	
+	public Expr getExpr() {
+		return expr;
+	}
 }

@@ -15,6 +15,7 @@ public abstract class PrimaryExpr extends Expr {
     } else if (Parser.t instanceof IdentToken) {
       return IdentExpr.parse();
     } else {
+    	Parser.addError("Number or identity expected");
       return null;
       //error?
     } 

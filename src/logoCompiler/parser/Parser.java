@@ -8,19 +8,21 @@ public final class Parser {
 	public static Token t;
 	public static boolean error = false;
 
-	public static ArrayList<String> errors = new ArrayList<>();
+	public static ArrayList<Error> errors = new ArrayList<>();
 	
 	public static void addError(String s) {
-		errors.add(s+" on line number " + Lexer.lineNumber + ".");
+		addError(s, Lexer.lineNumber);
 	}
 	
 	public static void addError(String s, int l){
-		errors.add(s+" on line number "+ l + ".");
+		if (errors.isEmpty() ||errors.get(errors.size()-1).getLineNumber() != Lexer.lineNumber) { 
+			errors.add(new Error(s, l));
+		}
 	}
 	
 	public static void printErrors() {
-		for (String s : errors) {
-			System.err.println(s);
+		for (Error e : errors) {
+			e.printError();
 		}
 	}
 

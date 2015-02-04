@@ -53,4 +53,10 @@ public class Prog {
 		}
 		return names;
 	}
+	
+	public void compare(){
+		for (Proc p: procs) {
+			p.compareArgs();
+		}
+	}
 }

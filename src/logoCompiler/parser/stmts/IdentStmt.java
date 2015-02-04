@@ -69,4 +69,8 @@ public class IdentStmt extends Stmt {
 			}
 		}
 	}
+	
+	public Expr getExpr() {
+		return expr;
+	}
 }
