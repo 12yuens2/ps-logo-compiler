@@ -129,4 +129,19 @@ public class Dictionary {
 	public static boolean isSpecial(int ch) {
 		return ( ch == EQUALS || ch == EXCLAMATION || ch == GREATERTHAN || ch == LESSTHAN);
 	}
+	
+	public static String processText(String s){
+		return s
+				.replaceAll(">=", " >= ")
+				.replaceAll("<=", " <= ")
+				.replaceAll("==", " == ")
+				.replaceAll("(", " ( ")
+				.replaceAll(")", " ) ")
+				.replaceAll("+", " + ")
+				.replaceAll("-", " - ")
+				.replaceAll("/", " / ")
+				.replaceAll("*", " * ");
+		
+	}
+	
 }
