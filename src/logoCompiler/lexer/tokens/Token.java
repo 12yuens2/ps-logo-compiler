@@ -13,10 +13,6 @@ public abstract class Token {
 	  }
 	
 	public Token(){
-		if (x < 90){
-			x++;
-			System.out.println(this);			
-		}
-
+		System.out.println(this);			
 	}
 }
