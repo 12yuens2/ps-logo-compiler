@@ -2,7 +2,6 @@ package logoCompiler.parser.exprs;
 
 import logoCompiler.Writer;
 import logoCompiler.lexer.tokens.NumToken;
-import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.Parser;
 
 public class NumExpr extends Expr {

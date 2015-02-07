@@ -1,7 +1,4 @@
 package logoCompiler.parser.exprs;
-
-import java.util.ArrayList;
-
 import logoCompiler.Writer;
 import logoCompiler.lexer.Lexer;
 import logoCompiler.lexer.tokens.keywords.IdentToken;

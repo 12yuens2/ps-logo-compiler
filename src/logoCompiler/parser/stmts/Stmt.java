@@ -1,6 +1,5 @@
 package logoCompiler.parser.stmts;
 
-import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.exprs.Expr;
 
 public class Stmt {

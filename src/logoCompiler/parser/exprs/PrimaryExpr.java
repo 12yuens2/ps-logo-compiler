@@ -1,5 +1,4 @@
 package logoCompiler.parser.exprs;
-import  logoCompiler.lexer.*;
 import logoCompiler.lexer.tokens.NumToken;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.Parser;
@@ -17,7 +16,6 @@ public abstract class PrimaryExpr extends Expr {
     } else {
     	Parser.addError("Number or identity expected");
       return null;
-      //error?
     } 
   }
 }

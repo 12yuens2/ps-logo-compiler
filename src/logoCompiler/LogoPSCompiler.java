@@ -1,8 +1,6 @@
 package logoCompiler;
 
 import logoCompiler.lexer.*;
-import logoCompiler.lexer.tokens.EOIToken;
-import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.*;
 import logoCompiler.parser.stmts.IdentStmt;
 import logoCompiler.Writer;
@@ -15,7 +13,6 @@ public class LogoPSCompiler {
 		Prog prog = Prog.parse();
 		IdentStmt.compare(prog.getProcNames());
 		prog.compare();
-		
 		
 		if (Parser.errors.isEmpty()) {
 			psPrologue();

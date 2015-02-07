@@ -1,23 +1,15 @@
 package logoCompiler.lexer;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
-
 import logoCompiler.lexer.tokens.EOIToken;
-import logoCompiler.lexer.tokens.LParenToken;
-import logoCompiler.lexer.tokens.RParenToken;
 import logoCompiler.lexer.tokens.Token;
-import logoCompiler.lexer.tokens.operators.DivideToken;
-import logoCompiler.lexer.tokens.operators.MinusToken;
 
 
 
 public final class Lexer {
 	static int ch = ' ';
-	static File logoFile = new File("src/LogoPrograms/dragon.t");
-	static FileReader reader;
+	static File logoFile = new File("src/LogoPrograms/fractal.t");
 	static String file;
 	static Scanner scanner;
 	public static int lineNumber = 1;
@@ -30,7 +22,7 @@ public final class Lexer {
 		if (scanner.hasNext()){
 			String token = scanner.next();
 			System.out.println(token);
-			while (token.equals("NEWLINE")){
+			while (token.equals("N_E_W_L_I_N_E")){
 				if (scanner.hasNext()){
 					lineNumber++;
 					token = scanner.next();
@@ -47,7 +39,6 @@ public final class Lexer {
 
 	static void initReader() {
 		try {
-			reader = new FileReader(logoFile);
 			scanner = new Scanner(logoFile);
 			scanner.useDelimiter("\\z");
 			file = scanner.next();
@@ -55,7 +46,7 @@ public final class Lexer {
 			scanner.close();
 			scanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("The requested file was not found.");
 		}
 	}
 

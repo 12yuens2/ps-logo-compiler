@@ -31,14 +31,13 @@ Xpos add /Xpos exch def
 } def
 /TREE{
 dup
-0 
+0
 gt
 {
 10
-
 Forward
 dup
-20 
+20
 div
 Left
 dup
@@ -47,30 +46,24 @@ sub
 TREE
 pop }{
 10
-
 Forward
 5
-
 Left
 pop } ifelse
 } def
 /LINE{
 dup
-1 
+1
 lt
 {
 10
-
 Forward
 60
-
 Left
 pop }{
 50
-
 Right
 10
-
 Forward
 dup
 1
@@ -80,11 +73,10 @@ pop } ifelse
 } def
 /KOCH{
 dup
-0 
+0
 eq
 {
 5
-
 Forward
 pop }{
 dup
@@ -92,21 +84,18 @@ dup
 sub
 KOCH
 60
-
 Left
 dup
 1
 sub
 KOCH
 120
-
 Right
 dup
 1
 sub
 koch
 60
-
 Left
 dup
 1
@@ -116,11 +105,10 @@ pop } ifelse
 } def
 /BLIP{
 dup
-1 
+1
 eq
 {
 3
-
 Forward
 pop }{
 dup
@@ -128,7 +116,6 @@ dup
 sub
 BLIP
 90
-
 Left
 dup
 1
@@ -139,14 +126,12 @@ dup
 sub
 BLIP
 90
-
 Right
 dup
 1
 sub
 BLIP
 90
-
 Right
 dup
 1
@@ -157,7 +142,6 @@ dup
 sub
 BLIP
 90
-
 Left
 dup
 1

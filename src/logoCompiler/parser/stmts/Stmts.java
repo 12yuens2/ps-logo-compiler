@@ -1,18 +1,14 @@
 package logoCompiler.parser.stmts;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 import logoCompiler.lexer.Lexer;
-import logoCompiler.lexer.tokens.Token;
-import logoCompiler.lexer.tokens.keywords.ELSEToken;
 import logoCompiler.lexer.tokens.keywords.FORWARDToken;
 import logoCompiler.lexer.tokens.keywords.IFToken;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.lexer.tokens.keywords.LEFTToken;
 import logoCompiler.lexer.tokens.keywords.RIGHTToken;
 import logoCompiler.parser.Parser;
-import logoCompiler.parser.Proc;
 
 public class Stmts {
 

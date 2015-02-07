@@ -79,7 +79,7 @@ public class Dictionary {
 				.replaceAll("> =", ">=")
 				.replaceAll("< =", "<=")
 				.replaceAll("!=", " != ")
-				.replaceAll("\n", " NEWLINE");
+				.replaceAll("\n", " N_E_W_L_I_N_E ");
 		
 	}
 	

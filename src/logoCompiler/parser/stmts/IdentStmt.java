@@ -2,8 +2,6 @@ package logoCompiler.parser.stmts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
 import logoCompiler.Writer;
 import logoCompiler.lexer.Lexer;
 import logoCompiler.lexer.tokens.LParenToken;

@@ -12,7 +12,7 @@ public class Writer {
 		try {
 			writer = new PrintWriter(filename);
 		} catch (FileNotFoundException e) {
-			System.err.println("Something went wrong. :(");
+			System.err.println("The requested file was not found.");
 		}
 	}
 	

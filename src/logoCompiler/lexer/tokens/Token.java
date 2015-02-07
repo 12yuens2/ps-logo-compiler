@@ -1,7 +1,5 @@
 package logoCompiler.lexer.tokens;
 
-import logoCompiler.parser.Parser;
-
 public abstract class Token {
 	
 	static int x = 0;
