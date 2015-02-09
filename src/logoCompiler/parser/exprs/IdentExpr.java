@@ -18,7 +18,6 @@ public class IdentExpr extends Expr {
 		String name;
 		
 		name = ((IdentToken)Parser.t).getName();
-		
 		return new IdentExpr(name, Lexer.lineNumber);
 		
 	}

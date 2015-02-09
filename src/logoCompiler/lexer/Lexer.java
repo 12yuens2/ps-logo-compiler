@@ -9,7 +9,7 @@ import logoCompiler.lexer.tokens.Token;
 
 public final class Lexer {
 	static int ch = ' ';
-	static File logoFile = new File("src/LogoPrograms/fractal.t");
+	static File logoFile = new File("src/LogoPrograms/dragon.t");
 	static String file;
 	static Scanner scanner;
 	public static int lineNumber = 1;
@@ -21,7 +21,6 @@ public final class Lexer {
 		}
 		if (scanner.hasNext()){
 			String token = scanner.next();
-			System.out.println(token);
 			while (token.equals("N_E_W_L_I_N_E")){
 				if (scanner.hasNext()){
 					lineNumber++;

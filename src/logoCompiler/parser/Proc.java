@@ -5,6 +5,7 @@ import logoCompiler.lexer.tokens.*;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.lexer.tokens.keywords.PROCToken;
 import logoCompiler.lexer.tokens.keywords.VOIDToken;
+import logoCompiler.parser.exprs.BinaryExpr;
 import logoCompiler.parser.exprs.Expr;
 import logoCompiler.parser.exprs.IdentExpr;
 import logoCompiler.parser.stmts.IfStmt;
@@ -99,6 +100,9 @@ public final class Proc {
 			if (!x.getName().equals(arg)){
 				Parser.addError("Unknown variable " + x.getName(), x.getLine());
 			}
+		} else if (e instanceof BinaryExpr){
+			testArgs( ((BinaryExpr)e).left );
+			testArgs( ((BinaryExpr)e).right );
 		}
 	}
 }
