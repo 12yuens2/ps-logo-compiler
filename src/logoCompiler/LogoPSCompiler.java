@@ -10,17 +10,18 @@ import logoCompiler.Writer;
 public class LogoPSCompiler {
 	public static void main(String[] args) {
 
+		//Initialization
 		if (args.length != 2){
 			System.err.println("Incorrect parameters.\n\tUsage: LogoPSCompiler input_file output_file\nThe file names are relative to their respective folders.");
-			System.err.println("Example usage: LogoPSCompiler dragon.t dragon.gs");
+			System.err.println("Example usage: LogoPSCompiler 'dragon.t' 'dragon.gs' ");
 			System.exit(0);
 		}
-		
 		try {
 			Lexer.init(args[0]);
 			Writer.init(args[1]);
 		} catch (FileNotFoundException e) {
 			System.err.println("There was a problem with opening the specified file.");
+			System.exit(0);
 		}
 		
 		Parser.t = Lexer.lex();
