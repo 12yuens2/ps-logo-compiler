@@ -6,19 +6,14 @@ import java.io.PrintWriter;
 public class Writer {
 	
 	static PrintWriter writer = null;
-	private static final String filename = "src/GhostScript/result.gs";
-	
-	public static void init(){
-		try {
-			writer = new PrintWriter(filename);
-		} catch (FileNotFoundException e) {
-			System.err.println("The requested file was not found.");
-		}
+
+	public static void init(String filename) throws FileNotFoundException{
+		writer = new PrintWriter("src/GhostScript/" + filename);
 	}
 	
 	public static void write(String s){
 		if (writer == null) { 
-			Writer.init(); 
+			return;
 		}
 		writer.println(s);
 	}

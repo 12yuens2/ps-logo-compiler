@@ -94,7 +94,7 @@ Right
 dup
 1
 sub
-koch
+KOCH
 60
 Left
 dup
@@ -150,8 +150,8 @@ BLIP
 pop } ifelse
 } def
 /MAIN{
-7
-BLIP
+6
+KOCH
 } def
 Xpos Ypos moveto
 MAIN

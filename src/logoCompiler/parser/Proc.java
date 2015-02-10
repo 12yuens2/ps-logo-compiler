@@ -5,6 +5,7 @@ import logoCompiler.lexer.tokens.*;
 import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.lexer.tokens.keywords.PROCToken;
 import logoCompiler.lexer.tokens.keywords.VOIDToken;
+import logoCompiler.parser.exprs.BinaryExpr;
 import logoCompiler.parser.exprs.Expr;
 import logoCompiler.parser.exprs.IdentExpr;
 import logoCompiler.parser.stmts.IfStmt;
@@ -79,6 +80,9 @@ public final class Proc {
 		return this.name;
 	}
 
+	/**
+	 * Compares the arguments of the procedure to the name of the of the initial argument.
+	 */
 	public void compareArgs(){
 		for (Stmt s: stmts.getStmts()){
 			if (s instanceof IfStmt){
@@ -93,12 +97,19 @@ public final class Proc {
 		}
 	}
 	
+	/**
+	 * Tests arguments in an expression against the argument of the procedure.
+	 * @param e the expression to be tested.
+	 */
 	public void testArgs(Expr e) {
 		if (e instanceof IdentExpr){
 			IdentExpr x = (IdentExpr) e;
 			if (!x.getName().equals(arg)){
-				Parser.addError("Unknown variable " + x.getName(), x.getLine());
+				Parser.addError("Unknown variable name " + x.getName(), x.getLine());
 			}
+		} else if (e instanceof BinaryExpr){
+			testArgs( ((BinaryExpr)e).left );
+			testArgs( ((BinaryExpr)e).right );
 		}
 	}
 }
