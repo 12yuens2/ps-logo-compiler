@@ -1,5 +1,7 @@
 package logoCompiler;
 
+import java.io.FileNotFoundException;
+
 import logoCompiler.lexer.*;
 import logoCompiler.parser.*;
 import logoCompiler.parser.stmts.IdentStmt;
@@ -8,7 +10,19 @@ import logoCompiler.Writer;
 public class LogoPSCompiler {
 	public static void main(String[] args) {
 
-		Writer.init();
+		if (args.length != 2){
+			System.err.println("Incorrect parameters.\n\tUsage: LogoPSCompiler input_file output_file\nThe file names are relative to their respective folders.");
+			System.err.println("Example usage: LogoPSCompiler dragon.t dragon.gs");
+			System.exit(0);
+		}
+		
+		try {
+			Lexer.init(args[0]);
+			Writer.init(args[1]);
+		} catch (FileNotFoundException e) {
+			System.err.println("There was a problem with opening the specified file.");
+		}
+		
 		Parser.t = Lexer.lex();
 		Prog prog = Prog.parse();
 		IdentStmt.compare(prog.getProcNames());
@@ -18,7 +32,7 @@ public class LogoPSCompiler {
 			psPrologue();
 			prog.codegen();
 			psEpilogue();
-			System.out.println("Output file created.");
+			System.out.println("No problems found.\nOutput file created.");
 		} else {
 			Parser.printErrors();
 			System.err.println("Output file not created.");

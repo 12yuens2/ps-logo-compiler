@@ -8,7 +8,7 @@ import logoCompiler.lexer.tokens.operators.booleans.*;
 public class Dictionary {
 
 	public static Token findToken(String token){
-		switch (token.trim()){
+		switch (token){
 		case "PROC":
 			return new PROCToken();
 		case "IF":
@@ -55,10 +55,10 @@ public class Dictionary {
 			return new LParenToken();
 		default:
 			try {
-				Integer.parseInt(token.trim());
+				Integer.parseInt(token);
 				return new NumToken(token);
 			} catch (NumberFormatException e) {
-				return new IdentToken(token.trim());
+				return new IdentToken(token);
 			}
 		}
 	}
