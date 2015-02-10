@@ -25,8 +25,6 @@ public class Dictionary {
 			return new LEFTToken();
 		case "THEN":
 			return new THENToken();
-			/*	    case "MAIN":
-	    	return new MAINToken(); */
 		case "VOID":
 			return new VOIDToken();
 		case "==": 
@@ -63,6 +61,11 @@ public class Dictionary {
 		}
 	}
 
+	/**
+	 * Processes a string to make it compiler-friendly.
+	 * @param s the string to be processed
+	 * @return the processed string
+	 */
 	public static String processText(String s){
 		return s
 				.replaceAll(">=", " >= ")

@@ -13,6 +13,9 @@ import logoCompiler.parser.exprs.Expr;
 
 public class IdentStmt extends Stmt {
 
+	/**
+	 * A list of all procedure calls and their respective line number.
+	 */
 	private static HashMap<String ,Integer> idents = new HashMap<String, Integer>();
 	
 	String name;
@@ -54,6 +57,10 @@ public class IdentStmt extends Stmt {
 		Writer.write(name);
 	}
 	
+	/**
+	 * Compares all procedure calls with all the procedure names in the program.
+	 * @param procNames the list of procedure names.
+	 */
 	public static void compare(ArrayList<String> procNames) {
 		for (String name : idents.keySet()){
 			boolean matches = false;

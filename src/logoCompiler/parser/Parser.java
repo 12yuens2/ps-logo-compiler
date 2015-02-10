@@ -15,6 +15,7 @@ public final class Parser {
 	}
 	
 	public static void addError(String s, int l){
+		//Avoiding multiple errors on the same line.
 		if (errors.isEmpty() ||errors.get(errors.size()-1).getLineNumber() != Lexer.lineNumber) { 
 			errors.add(new Error(s, l));
 		}

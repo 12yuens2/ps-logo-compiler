@@ -67,6 +67,7 @@ public class IfStmt extends Stmt {
 		expr.codegen();
 		Writer.write("{");
 		thenStmts.codegen();
+		// pop at end of if to obtain original value and avoid stack overflow.
 		Writer.write("pop }{");
 		elseStmts.codegen();
 		Writer.write("pop } ifelse");

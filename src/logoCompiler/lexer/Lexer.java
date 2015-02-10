@@ -30,6 +30,11 @@ public final class Lexer {
 		}
 	}
 
+	/**
+	 * Processes the specified file and re-opens the Scanner object to begin tokenization.
+	 * @param filename the file name
+	 * @throws FileNotFoundException
+	 */
 	public static void init(String filename) throws FileNotFoundException {
 		scanner = new Scanner(new File("src/LogoPrograms/" + filename));
 		scanner.useDelimiter("\\z");
