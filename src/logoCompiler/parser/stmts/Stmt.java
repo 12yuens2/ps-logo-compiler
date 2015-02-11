@@ -10,8 +10,7 @@ public class Stmt {
 	}
 
 	public void codegen() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public Expr getExpr() {

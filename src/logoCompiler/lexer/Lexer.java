@@ -5,8 +5,6 @@ import java.util.Scanner;
 import logoCompiler.lexer.tokens.EOIToken;
 import logoCompiler.lexer.tokens.Token;
 
-
-
 public final class Lexer {
 	static int ch = ' ';
 	static String file;

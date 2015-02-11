@@ -1,6 +1,5 @@
 package logoCompiler.lexer.tokens.operators;
 
-
 public class DivideToken extends OperatorToken {
 
 	@Override

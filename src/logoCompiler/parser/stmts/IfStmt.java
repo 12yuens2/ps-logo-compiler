@@ -21,7 +21,6 @@ public class IfStmt extends Stmt {
 		this.elseStmts = el;
 	}
 	
-	
 	public static Stmt parse () {
 		
 		Stmts then = new Stmts();

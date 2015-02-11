@@ -4,6 +4,7 @@ import logoCompiler.lexer.tokens.EOIToken;
 import logoCompiler.lexer.tokens.keywords.PROCToken;
 
 import java.util.*;
+
 /*
  * prog:
  *   { proc }

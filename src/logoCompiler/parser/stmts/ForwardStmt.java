@@ -5,7 +5,6 @@ import logoCompiler.lexer.Lexer;
 import logoCompiler.parser.Parser;
 import logoCompiler.parser.exprs.Expr;
 
-
 public class ForwardStmt extends Stmt {
 	Expr expr;
 

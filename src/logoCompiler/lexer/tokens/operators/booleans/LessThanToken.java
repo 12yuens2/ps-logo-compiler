@@ -2,7 +2,6 @@ package logoCompiler.lexer.tokens.operators.booleans;
 
 import logoCompiler.lexer.tokens.operators.OperatorToken;
 
-
 public class LessThanToken extends OperatorToken {
 
 	@Override

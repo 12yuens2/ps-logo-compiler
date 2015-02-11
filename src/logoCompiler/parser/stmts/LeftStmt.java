@@ -4,9 +4,6 @@ import  logoCompiler.lexer.*;
 import logoCompiler.parser.Parser;
 import logoCompiler.parser.exprs.Expr;
 
-/*
- *   "LEFT" expr
- */
 public final class LeftStmt extends Stmt {
 	Expr expr;
 

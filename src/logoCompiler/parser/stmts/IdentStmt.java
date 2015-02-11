@@ -10,7 +10,6 @@ import logoCompiler.lexer.tokens.keywords.IdentToken;
 import logoCompiler.parser.Parser;
 import logoCompiler.parser.exprs.Expr;
 
-
 public class IdentStmt extends Stmt {
 
 	/**
