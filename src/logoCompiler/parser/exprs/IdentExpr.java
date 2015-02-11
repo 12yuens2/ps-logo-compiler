@@ -24,7 +24,8 @@ public class IdentExpr extends Expr {
 	
 	@Override
 	public void codegen() {
-		Writer.write("dup");
+		//Replaced Writer.write("dup");
+		Writer.write("/Arg exch def Arg Arg");
 	}
 
 	public String getName() {

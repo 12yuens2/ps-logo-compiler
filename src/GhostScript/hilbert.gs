@@ -30,13 +30,13 @@ Ypos add /Ypos exch def
 Xpos add /Xpos exch def
 } def
 /LHILBERT{
-dup
+/Arg exch def Arg Arg
 0
 ne
 {
 90
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 RHILBERT
@@ -44,13 +44,13 @@ RHILBERT
 Forward
 90
 Right
-dup
+/Arg exch def Arg Arg
 1
 sub
 LHILBERT
 4
 Forward
-dup
+/Arg exch def Arg Arg
 1
 sub
 LHILBERT
@@ -58,25 +58,25 @@ LHILBERT
 Right
 4
 Forward
-dup
+/Arg exch def Arg Arg
 1
 sub
 RHILBERT
 90
 Left
-pop }{
+/Arg exch def }{
 0
 Forward
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /RHILBERT{
-dup
+/Arg exch def Arg Arg
 0
 ne
 {
 90
 Right
-dup
+/Arg exch def Arg Arg
 1
 sub
 LHILBERT
@@ -84,13 +84,13 @@ LHILBERT
 Forward
 90
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 RHILBERT
 4
 Forward
-dup
+/Arg exch def Arg Arg
 1
 sub
 RHILBERT
@@ -98,16 +98,16 @@ RHILBERT
 Left
 4
 Forward
-dup
+/Arg exch def Arg Arg
 1
 sub
 LHILBERT
 90
 Right
-pop }{
+/Arg exch def }{
 0
 Forward
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /MAIN{
 6

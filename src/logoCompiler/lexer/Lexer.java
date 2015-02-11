@@ -16,6 +16,8 @@ public final class Lexer {
 	public static Token lex() {
 		if (scanner.hasNext()){
 			String token = scanner.next();
+// Debugging
+//			System.out.println(token);
 			while (token.equals("N_E_W_L_I_N_E")){
 				if (scanner.hasNext()){
 					lineNumber++;

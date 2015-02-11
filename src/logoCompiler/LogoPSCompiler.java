@@ -33,7 +33,7 @@ public class LogoPSCompiler {
 			psPrologue();
 			prog.codegen();
 			psEpilogue();
-			System.out.println("No problems found.\nOutput file created.");
+			System.out.println("No problems found.\nOutput file created at: src/GhostScript/" + args[1]);
 		} else {
 			Parser.printErrors();
 			System.err.println("Output file not created.");

@@ -30,38 +30,38 @@ Ypos add /Ypos exch def
 Xpos add /Xpos exch def
 } def
 /TRIANGLE{
-dup
+/Arg exch def Arg Arg
 5
 gt
 {
-dup
+/Arg exch def Arg Arg
 2
 div
 TRIANGLE
-dup
+/Arg exch def Arg Arg
 Forward
 120
 Right
-dup
+/Arg exch def Arg Arg
 2
 div
 TRIANGLE
-dup
+/Arg exch def Arg Arg
 Forward
 120
 Right
-dup
+/Arg exch def Arg Arg
 2
 div
 TRIANGLE
-dup
+/Arg exch def Arg Arg
 Forward
 120
 Right
-pop }{
+/Arg exch def }{
 0
 Forward
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /MAIN{
 250

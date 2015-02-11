@@ -30,29 +30,29 @@ Ypos add /Ypos exch def
 Xpos add /Xpos exch def
 } def
 /TREE{
-dup
+/Arg exch def Arg Arg
 0
 gt
 {
 10
 Forward
-dup
+/Arg exch def Arg Arg
 20
 div
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 TREE
-pop }{
+/Arg exch def }{
 10
 Forward
 5
 Left
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /LINE{
-dup
+/Arg exch def Arg Arg
 1
 lt
 {
@@ -60,94 +60,94 @@ lt
 Forward
 60
 Left
-pop }{
+/Arg exch def }{
 50
 Right
 10
 Forward
-dup
+/Arg exch def Arg Arg
 1
 sub
 LINE
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /KOCH{
-dup
+/Arg exch def Arg Arg
 0
 eq
 {
 5
 Forward
-pop }{
-dup
+/Arg exch def }{
+/Arg exch def Arg Arg
 1
 sub
 KOCH
 60
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 KOCH
 120
 Right
-dup
+/Arg exch def Arg Arg
 1
 sub
 KOCH
 60
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 KOCH
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /BLIP{
-dup
+/Arg exch def Arg Arg
 1
 eq
 {
 3
 Forward
-pop }{
-dup
+/Arg exch def }{
+/Arg exch def Arg Arg
 1
 sub
 BLIP
 90
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 BLIP
-dup
-1
-sub
-BLIP
-90
-Right
-dup
+/Arg exch def Arg Arg
 1
 sub
 BLIP
 90
 Right
-dup
+/Arg exch def Arg Arg
 1
 sub
 BLIP
-dup
+90
+Right
+/Arg exch def Arg Arg
+1
+sub
+BLIP
+/Arg exch def Arg Arg
 1
 sub
 BLIP
 90
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 BLIP
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /MAIN{
 6

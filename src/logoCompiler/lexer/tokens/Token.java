@@ -11,6 +11,7 @@ public abstract class Token {
 	  }
 	
 	public Token(){
-//		System.out.println(this);			
+// Debugging
+//		System.out.println(this);
 	}
 }

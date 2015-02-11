@@ -30,44 +30,44 @@ Ypos add /Ypos exch def
 Xpos add /Xpos exch def
 } def
 /LDRAGON{
-dup
+/Arg exch def Arg Arg
 0
 eq
 {
 5
 Forward
-pop }{
-dup
+/Arg exch def }{
+/Arg exch def Arg Arg
 1
 sub
 LDRAGON
 90
 Left
-dup
+/Arg exch def Arg Arg
 1
 sub
 RDRAGON
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /RDRAGON{
-dup
+/Arg exch def Arg Arg
 0
 eq
 {
 5
 Forward
-pop }{
-dup
+/Arg exch def }{
+/Arg exch def Arg Arg
 1
 sub
 LDRAGON
 90
 Right
-dup
+/Arg exch def Arg Arg
 1
 sub
 RDRAGON
-pop } ifelse
+/Arg exch def } ifelse
 } def
 /MAIN{
 11
